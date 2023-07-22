@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "main.h"
-
 /**
  * _putchar - write a char to stdout
  * @c: The character to print
@@ -9,9 +8,8 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+return (write(1, &c, 1));
 }
-
 /**
  * _print_char - print a char
  * @args: The argument list
@@ -19,11 +17,9 @@ int _putchar(char c)
  */
 int _print_char(va_list args)
 {
-	char ch = va_arg(args, int);
-
-	return (_putchar(ch));
+char ch = va_arg(args, int);
+return (_putchar(ch));
 }
-
 /**
  * _print_string - print a %s string
  * @args: The argument list
@@ -31,21 +27,50 @@ int _print_char(va_list args)
  */
 int _print_string(va_list args)
 {
-	char *str = va_arg(args, char *);
-	int count;
-
-	count = 0;
-	if (str == NULL)
-		str = "(null)";
-	while (*str)
-	{
-		count += _putchar(*str);
-		str++;
-	}
-
-	return (count);
+char *str = va_arg(args, char *);
+if (str == NULL)
+str = "(null)";
+int count = 0;
+while (*str)
+{
+count += _putchar(*str);
+str++;
 }
-
+return (count);
+}
+/**
+ * _print_integer - print a signed integer (d, i)
+ * @args: The argument list
+ * Return: The number of characters written
+ */
+int _print_integer(va_list args)
+{
+int num = va_arg(args, int);
+int count = 0;
+int sign = 1;
+if (num < 0)
+{
+sign = -1;
+count += _putchar('-');
+}
+if (num == 0)
+{
+count += _putchar('0');
+return (count);
+}
+int rev_num = 0;
+while (num != 0)
+{
+rev_num = rev_num * 10 + (num % 10);
+num /= 10;
+}
+while (rev_num != 0)
+{
+count += _putchar('0' + (rev_num % 10) * sign);
+rev_num /= 10;
+}
+return (count);
+}
 /**
  * _printf - custom printf function
  * @format: The format string containing conversion specifiers
@@ -53,43 +78,41 @@ int _print_string(va_list args)
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int count;
-
-	count = 0;
-	va_start(args, format);
-	while (*format)
-	{
-		if (*format != '%')
-		{
-			count += _putchar(*format);
-		}
-		else
-		{
-			format++;
-
-			switch (*format)
-			{
-			case 'c':
-				count += _print_char(args);
-				break;
-
-			case 's':
-				count += _print_string(args);
-				break;
-
-			case '%':
-				count += _putchar('%');
-				break;
-
-			default:
-				count += _putchar('%');
-				count += _putchar(*format);
-				break;
-			}
-		}
-		format++;
-	}
-	va_end(args);
-	return (count);
+va_list args;
+int count = 0;
+va_start(args, format);
+while (*format)
+{
+if (*format != '%')
+{
+count += _putchar(*format);
+}
+else
+{
+format++;
+switch (*format)
+{
+case 'c':
+count += _print_char(args);
+break;
+case 's':
+count += _print_string(args);
+break;
+case 'd':
+case 'i':
+count += _print_integer(args);
+break;
+case '%':
+count += _putchar('%');
+break;
+default:
+count += _putchar('%');
+count += _putchar(*format);
+break;
+}
+}
+format++;
+}
+va_end(args);
+return (count);
 }
