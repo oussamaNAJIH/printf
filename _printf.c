@@ -33,8 +33,8 @@ int _print_string(va_list args)
 {
 	char *str = va_arg(args, char *);
 	int count;
-        count = 0;
 
+	count = 0;
 	if (str == NULL)
 		str = "(null)";
 	while (*str)
@@ -55,10 +55,9 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int count;
+
 	count = 0;
-
 	va_start(args, format);
-
 	while (*format)
 	{
 		if (*format != '%')
