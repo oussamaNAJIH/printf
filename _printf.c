@@ -1,60 +1,93 @@
+#include <unistd.h>
+#include <stdarg.h>
 #include "main.h"
+
 /**
- * _printf - produces output according to a format
- * @format: the string to printout
- * Return: returns the number of characters printed
+ * _putchar - write a char to stdout
+ * @c: The character to print
+ * Return: The number of characters written
+ */
+int _putchar(char c)
+{
+	return write(1, &c, 1);
+}
+
+/**
+ * _print_char - print a char
+ * @args: The argument list
+ * Return: The number of characters written
+ */
+int _print_char(va_list args)
+{
+	char ch = va_arg(args, int);
+	return _putchar(ch);
+}
+
+/**
+ * _print_string - print a %s string
+ * @args: The argument list
+ * Return: The number of characters written
+ */
+int _print_string(va_list args)
+{
+	char *str = va_arg(args, char *);
+	if (str == NULL)
+		str = "(null)";
+
+	int count = 0;
+	while (*str)
+	{
+		count += _putchar(*str);
+		str++;
+	}
+
+	return count;
+}
+
+/**
+ * _printf - custom printf function
+ * @format: The format string containing conversion specifiers
+ * Return: The number of characters printed (excluding the null byte)
  */
 int _printf(const char *format, ...)
 {
-va_list args;
-va_start(args, format);
-int printed_chars = 0;
-while (*format)
-{
-if (*format == '%')
-{
-format++;
-switch (*format)
-{
-case 'c':
-{
-char ch = (char) va_arg(args, int);
-putchar(ch);
-printed_chars++;
-break;
-}
-case 's':
-{
-const char *str = va_arg(args, const char *);
-while (*str)
-{
-putchar(*str);
-str++;
-printed_chars++;
-}
-break;
-}
-case '%':
-{
-putchar('%');
-printed_chars++;
-break;
-}
-default:
-{
-putchar('%');
-printed_chars++;
-break;
-}
-}
-}
-else
-{
-putchar(*format);
-printed_chars++;
-}
-format++;
-}
-va_end(args);
-return (printed_chars);
+	va_list args;
+	int count = 0;
+
+	va_start(args, format);
+
+	while (*format)
+	{
+		if (*format != '%')
+		{
+			count += _putchar(*format);
+		}
+		else
+		{
+			format++;
+
+			switch (*format)
+			{
+			case 'c':
+				count += _print_char(args);
+				break;
+
+			case 's':
+				count += _print_string(args);
+				break;
+
+			case '%':
+				count += _putchar('%');
+				break;
+
+			default:
+				count += _putchar('%');
+				count += _putchar(*format);
+				break;
+			}
+		}
+		format++;
+	}
+	va_end(args);
+	return count;
 }
