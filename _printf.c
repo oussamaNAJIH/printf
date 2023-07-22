@@ -9,7 +9,7 @@
  */
 int _putchar(char c)
 {
-	return write(1, &c, 1);
+	return (write(1, &c, 1));
 }
 
 /**
@@ -20,7 +20,8 @@ int _putchar(char c)
 int _print_char(va_list args)
 {
 	char ch = va_arg(args, int);
-	return _putchar(ch);
+
+	return (_putchar(ch));
 }
 
 /**
@@ -31,17 +32,18 @@ int _print_char(va_list args)
 int _print_string(va_list args)
 {
 	char *str = va_arg(args, char *);
+
 	if (str == NULL)
 		str = "(null)";
-
 	int count = 0;
+
 	while (*str)
 	{
 		count += _putchar(*str);
 		str++;
 	}
 
-	return count;
+	return (count);
 }
 
 /**
@@ -89,5 +91,5 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
-	return count;
+	return (count);
 }
