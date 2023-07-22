@@ -27,10 +27,10 @@ return (_putchar(ch));
  */
 int _print_string(va_list args)
 {
+int count = 0;
 char *str = va_arg(args, char *);
 if (str == NULL)
 str = "(null)";
-int count = 0;
 while (*str)
 {
 count += _putchar(*str);
@@ -45,6 +45,7 @@ return (count);
  */
 int _print_integer(va_list args)
 {
+int rev_num = 0;
 int num = va_arg(args, int);
 int count = 0;
 int sign = 1;
@@ -58,7 +59,6 @@ if (num == 0)
 count += _putchar('0');
 return (count);
 }
-int rev_num = 0;
 while (num != 0)
 {
 rev_num = rev_num * 10 + (num % 10);
