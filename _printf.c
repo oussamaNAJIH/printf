@@ -11,17 +11,18 @@ int _putchar(char c)
 return (write(1, &c, 1));
 }
 /**
- * _print_char - prints a char
+ * _print_char - print a char
  * @args: The argument list
  * Return: The number of characters written
  */
 int _print_char(va_list args)
 {
 char ch = va_arg(args, int);
-return (_putchar(ch));
+_putchar(ch);
+return (1);
 }
 /**
- * _print_string - prints a string
+ * _print_string - print a %s string
  * @args: The argument list
  * Return: The number of characters written
  */
@@ -33,8 +34,9 @@ if (str == NULL)
 str = "(null)";
 while (*str)
 {
-count += _putchar(*str);
+_putchar(*str);
 str++;
+count++;
 }
 return (count);
 }
@@ -47,9 +49,9 @@ int _print_integer(va_list args)
 {
 int num = va_arg(args, int);
 int count = 0;
-int sign = 1;
-int temp;
 int divisor = 1;
+int temp;
+int sign = 1;
 if (num < 0)
 {
 sign = -1;
