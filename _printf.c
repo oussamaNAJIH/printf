@@ -71,6 +71,7 @@ rev_num /= 10;
 }
 return (count);
 }
+
 /**
  * _printf - custom printf function
  * @format: The format string containing conversion specifiers
