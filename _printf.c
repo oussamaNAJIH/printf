@@ -9,15 +9,6 @@
  */
 int _printf(const char *format, ...);
 /**
- * _putchar - write a char to stdout
- * @c: The character to print
- * Return: The number of characters written
- */
-int _putchar(char c)
-{
-return (write(1, &c, 1));
-}
-/**
  * _print_char - print a char
  * @args: The argument list
  * Return: The number of characters written
