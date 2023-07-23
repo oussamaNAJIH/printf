@@ -30,7 +30,7 @@ int _print_string(va_list args)
 int count = 0;
 char *str = va_arg(args, char *);
 if (str == NULL)
-str = "(null)";
+return (0);
 while (*str)
 {
 count += _putchar(*str);
