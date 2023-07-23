@@ -30,7 +30,7 @@ int _print_string(va_list args)
 int count = 0;
 char *str = va_arg(args, char *);
 if (str == NULL)
-return (0);
+str = "(null)";
 while (*str)
 {
 count += _putchar(*str);
@@ -45,32 +45,38 @@ return (count);
  */
 int _print_integer(va_list args)
 {
-int rev_num = 0;
 int num = va_arg(args, int);
 int count = 0;
 int sign = 1;
+int temp;
+int divisor = 1;
 if (num < 0)
 {
 sign = -1;
 count += _putchar('-');
+num = -num;
 }
 if (num == 0)
 {
 count += _putchar('0');
 return (count);
 }
-while (num != 0)
+temp = num;
+while (temp > 9)
 {
-rev_num = rev_num * 10 + (num % 10);
-num /= 10;
+divisor *= 10;
+temp /= 10;
 }
-while (rev_num != 0)
+while (divisor > 0)
 {
-count += _putchar('0' + (rev_num % 10) * sign);
-rev_num /= 10;
+int digit = num / divisor;
+count += _putchar('0' + digit * sign);
+num %= divisor;
+divisor /= 10;
 }
 return (count);
 }
+
 
 /**
  * _printf - custom printf function
