@@ -73,6 +73,9 @@ int _printf(const char *format, ...)
 va_list args;
 int count = 0;
 va_start(args, format);
+
+if( format == NULL)
+    return (-1);
 while (*format)
 {
 if (*format != '%')
