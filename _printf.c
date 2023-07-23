@@ -1,15 +1,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "main.h"
-/**
- * _putchar - write a char to stdout
- * @c: The character to print
- * Return: The number of characters written
- */
-int _putchar(char c)
-{
-return (write(1, &c, 1));
-}
+
 /**
  * _print_char - print a char
  * @args: The argument list
@@ -81,6 +73,9 @@ int _printf(const char *format, ...)
 va_list args;
 int count = 0;
 va_start(args, format);
+
+if( format == NULL)
+    return (-1);
 while (*format)
 {
 if (*format != '%')
