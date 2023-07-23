@@ -11,7 +11,7 @@ int _putchar(char c)
 return (write(1, &c, 1));
 }
 /**
- * _print_char - print a char
+ * _print_char - prints a char
  * @args: The argument list
  * Return: The number of characters written
  */
@@ -21,7 +21,7 @@ char ch = va_arg(args, int);
 return (_putchar(ch));
 }
 /**
- * _print_string - print a %s string
+ * _print_string - prints a string
  * @args: The argument list
  * Return: The number of characters written
  */
@@ -31,6 +31,7 @@ int count = 0;
 char *str = va_arg(args, char *);
 if (str == NULL)
 str = "(null)";
+return (0);
 while (*str)
 {
 count += _putchar(*str);
