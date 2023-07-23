@@ -1,6 +1,13 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "main.h"
+
+/**
+ * _printf - custom printf function
+ * @format: The format string containing conversion specifiers
+ * Return: The number of characters printed (excluding the null byte)
+ */
+int _printf(const char *format, ...);
 /**
  * _putchar - write a char to stdout
  * @c: The character to print
