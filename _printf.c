@@ -2,83 +2,6 @@
 #include <stdarg.h>
 #include "main.h"
 
-/**
- * _printf - custom printf function
- * @format: The format string containing conversion specifiers
- * Return: The number of characters printed (excluding the null byte)
- */
-int _printf(const char *format, ...);
-/**
- * _print_char - print a char
- * @args: The argument list
- * Return: The number of characters written
- */
-int _print_char(va_list args)
-{
-char ch = va_arg(args, int);
-_putchar(ch);
-return (1);
-}
-/**
- * _print_string - print a %s string
- * @args: The argument list
- * Return: The number of characters written
- */
-int _print_string(va_list args)
-{
-int count = 0;
-char *str = va_arg(args, char *);
-if (str == NULL)
-{
-str = "(null)";
-}
-while (*str)
-{
-_putchar(*str);
-str++;
-count++;
-}
-return (count);
-}
-/**
- * _print_integer - print a signed integer (d, i)
- * @args: The argument list
- * Return: The number of characters written
- */
-int _print_integer(va_list args)
-{
-int num = va_arg(args, int);
-int count = 0;
-int divisor = 1;
-int temp;
-int sign = 1;
-if (num < 0)
-{
-sign = -1;
-count += _putchar('-');
-num = -num;
-}
-if (num == 0)
-{
-count += _putchar('0');
-return (count);
-}
-temp = num;
-while (temp > 9)
-{
-divisor *= 10;
-temp /= 10;
-}
-while (divisor > 0)
-{
-int digit = num / divisor;
-count += _putchar('0' + digit * sign);
-num %= divisor;
-divisor /= 10;
-}
-return (count);
-}
-
 
 /**
  * _printf - custom printf function
@@ -92,15 +15,11 @@ int count = 0;
 
 va_start(args, format);
 if (!format || !format[0] || !format[1])
-{
-return (-1);
-}
+    return (-1);
 while (*format)
 {
 if (*format != '%')
-{
-count += _putchar(*format);
-}
+    count += _putchar(*format);
 else
 {
 format++;
@@ -113,8 +32,10 @@ case 's':
 count += _print_string(args);
 break;
 case 'd':
+count += _print_d_integer(args);
+break;
 case 'i':
-count += _print_integer(args);
+count += _print_i_integer(args);
 break;
 case '%':
 count += _putchar('%');
