@@ -14,15 +14,15 @@ if (args == NULL)
 {
 return (-1);
 }
-if (num < 0)
-{
-count += _putchar('-');
-num = -num;
-}
 if (num == 0)
 {
 count += _putchar('0');
 return (count);
+}
+if (num < 0)
+{
+count += _putchar('-');
+num = -num;
 }
 temp = num;
 while (temp > 9)
