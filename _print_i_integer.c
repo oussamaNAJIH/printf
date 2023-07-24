@@ -11,10 +11,8 @@ int num = va_arg(args, int);
 int count = 0;
 int divisor = 1;
 int temp;
-int sign = 1;
 if (num < 0)
 {
-sign = -1;
 count += _putchar('-');
 num = -num;
 }
