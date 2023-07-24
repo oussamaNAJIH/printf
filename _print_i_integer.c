@@ -32,7 +32,7 @@ temp /= 10;
 while (divisor > 0)
 {
 int digit = num / divisor;
-count += _putchar(48 + digit * sign);
+count += _putchar('0' + digit);
 num %= divisor;
 divisor /= 10;
 }
