@@ -16,7 +16,7 @@ if (num < 0)
 count += _putchar('-');
 num = -num;
 }
-if (num == 0 || num == (int) NULL)
+if (args == NULL || num == 0)
 {
 count += _putchar('0');
 return (count);
