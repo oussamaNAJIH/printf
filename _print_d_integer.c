@@ -6,20 +6,20 @@
  */
 int _print_d_integer(va_list args)
 {
-int num = va_arg(args, int);
-int count = 0;
-int divisor = 1;
-int temp;
 if (args == NULL)
 {
 return (-1);
 }
+int num = va_arg(args, int);
+int count = 0;
+int divisor = 1;
+int temp;
 if (num < 0)
 {
 count += _putchar('-');
 num = -num;
 }
-if (num == 0 || args == NULL)
+if (num == 0)
 {
 count += _putchar('0');
 return (count);
