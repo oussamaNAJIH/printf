@@ -4,7 +4,7 @@
 
 
 /**
- * _printf - custom printf function
+ * _printf - custom printf function in a single file
  * @format: The format string containing conversion specifiers
  * Return: The number of characters printed (excluding the null byte)
  */
@@ -15,11 +15,11 @@ int count = 0;
 
 va_start(args, format);
 if (!format || !format[0] || !format[1])
-    return (-1);
+	return (-1);
 while (*format)
 {
 if (*format != '%')
-    count += _putchar(*format);
+	count += _putchar(*format);
 else
 {
 format++;

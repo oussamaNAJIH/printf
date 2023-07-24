@@ -37,7 +37,7 @@ shift -= 4;
 else
 {
 while (divisor <= num / 10)
-    divisor *= 10;
+	divisor *= 10;
 while (divisor > 0)
 {
 digit = num / divisor;

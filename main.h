@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 /*
-* _putchar function
+* _putchar function is the first one
 */
 int _putchar(char c);
 
