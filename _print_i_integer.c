@@ -8,43 +8,33 @@
 int _print_i_integer(va_list args)
 {
 int num = va_arg(args, int);
-int count = 0, shift = 28, divisor = 1, digit;
-if (num == 0)
-{
-count += putchar('0');
-return (count);
-}
+int count = 0;
+int divisor = 1;
+int temp;
+int sign = 1;
 if (num < 0)
 {
-count += putchar('-');
+sign = -1;
+count += _putchar('-');
 num = -num;
 }
-if (num >= 0x100)
+if (num == 0)
 {
-count += putchar('0') + putchar('x');
-count -= 2;
-while ((num >> shift) == 0)
-{
-shift -= 4;
+count += _putchar('0');
+return (count);
 }
-while (shift >= 0)
+temp = num;
+while (temp > 9)
 {
-digit = (num >> shift) &0xF;
-count += putchar(digit < 10 ? '0' + digit : 'a' + digit - 10);
-shift -= 4;
+divisor *= 10;
+temp /= 10;
 }
-}
-else
-{
-while (divisor <= num / 10)
-	divisor *= 10;
 while (divisor > 0)
 {
-digit = num / divisor;
-count += putchar('0' + digit);
+int digit = num / divisor;
+count += _putchar(48 + digit * sign);
 num %= divisor;
 divisor /= 10;
-}
 }
 return (count);
 }
