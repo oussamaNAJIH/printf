@@ -11,12 +11,16 @@ int num = va_arg(args, int);
 int count = 0;
 int divisor = 1;
 int temp;
+if (args == NULL)
+{
+return (-1);
+}
 if (num < 0)
 {
 count += _putchar('-');
 num = -num;
 }
-if (args == NULL || num == 0)
+if (num == 0)
 {
 count += _putchar('0');
 return (count);

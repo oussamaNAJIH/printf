@@ -12,7 +12,7 @@ int divisor = 1;
 int temp;
 if (args == NULL)
 {
-return (0);
+return (-1);
 }
 if (num < 0)
 {
