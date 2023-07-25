@@ -18,27 +18,8 @@ struct convert
 };
 typedef struct convert conver_t;
 
-<<<<<<< HEAD
 /*Main functions*/
 int parser(const char *format, conver_t f_list[], va_list arg_list);
-=======
-/*
-* 0. I'm not going anywhere. You can print that wherever
-* you want to. I'm here and I'm a Spur for life
-*/
-int _print_char(va_list args);
-int _print_string(va_list args);
-
-/*
-* 1. Education is when you read the fine print.
-* Experience is what you get if you don't
-*/
-int _print_integer(va_list args);
-
-/*
-* _printf function
-*/
->>>>>>> ce2f4c802cf030b08d69eb0c10b2edab18cb5a3c
 int _printf(const char *format, ...);
 int _put_char(char);
 int print_char(va_list);
