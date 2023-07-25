@@ -1,3 +1,0 @@
-# 0x11. C - printf 
-
-- OUSSAMA NAJIH & AYOUB EZZAHIRI
