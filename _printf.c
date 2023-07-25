@@ -25,6 +25,7 @@ int _printf(const char *format, ...)
 	};
 	va_list arg_list;
 
+<<<<<<< HEAD
 	if (format == NULL)
 		return (-1);
 
@@ -33,4 +34,43 @@ int _printf(const char *format, ...)
 	printed_chars = parser(format, f_list, arg_list);
 	va_end(arg_list);
 	return (printed_chars);
+=======
+va_start(args, format);
+if (!format || !format[0] || !format[1])
+	return (-1);
+while (*format)
+{
+if (*format != '%')
+	count += _putchar(*format);
+else
+{
+format++;
+switch (*format)
+{
+case 'c':
+count += _print_char(args);
+break;
+case 's':
+count += _print_string(args);
+break;
+case 'd':
+count += _print_integer(args);
+break;
+case 'i':
+count += _print_integer(args);
+break;
+case '%':
+count += _putchar('%');
+break;
+default:
+count += _putchar('%');
+count += _putchar(*format);
+break;
+}
+}
+format++;
+}
+va_end(args);
+return (count);
+>>>>>>> ce2f4c802cf030b08d69eb0c10b2edab18cb5a3c
 }
