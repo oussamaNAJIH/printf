@@ -20,8 +20,7 @@ int _print_string(va_list args);
 * 1. Education is when you read the fine print.
 * Experience is what you get if you don't
 */
-int _print_d_integer(va_list args);
-int _print_i_integer(va_list args);
+int _print_integer(va_list args);
 
 /*
 * _printf function

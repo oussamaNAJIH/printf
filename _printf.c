@@ -32,10 +32,10 @@ case 's':
 count += _print_string(args);
 break;
 case 'd':
-count += _print_d_integer(args);
+count += _print_integer(args);
 break;
 case 'i':
-count += _print_i_integer(args);
+count += _print_integer(args);
 break;
 case '%':
 count += _putchar('%');
